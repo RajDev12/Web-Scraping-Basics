@@ -32,7 +32,11 @@ print(l)
 s = soup.find(id = "link3")
 print(s.get("href"))
 print(s.get_text())  #public
-print(soup.select("div.italic"))
+print(soup.select("div.italic")) #in case of multiple div ,it will output in List
+
+print(soup.select("span#italic"))
+print(soup.span.get("class"))
+
 
 
 
