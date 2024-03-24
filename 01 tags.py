@@ -52,16 +52,43 @@ soup = BeautifulSoup(html_doc, 'html.parser' )
 # for parent in soup.find(class_="box").parents:
 #     print(parent)  #first it will print parent of box i.e container. Then body part as parent of container and then the total html tag as parent of webpage
 
-cont = soup.find(class_="container")
-print(cont)
-#modifying the div to span
-cont.name="span"
-print(cont)
-cont["class"]="myclass class1"
-print(cont)
+# cont = soup.find(class_="container")
+# print(cont)
+# #modifying the div to span
+# cont.name="span"
+# print(cont)
+# cont["class"]="myclass class1"
+# print(cont)
+# cont.string="i am a string"
+# print(cont)
+
+#Adding a new tag to the html page
+#Step1=Prepare the tag
+# ultag=soup.new_tag("ul")
+# litag=soup.new_tag("li")
+# litag.string="Home"
+# ultag.append(litag)
+
+# litag=soup.new_tag("li")
+# litag.string="About"
+# ultag.append(litag)
+
+# soup.html.body.insert(0, ultag)   #it will insert at the first position.
+# with open("modified.html", "w") as f:
+#     f.write(str(soup))  
 
 
+#Find if a tag has a attribute by the passing the name of the attribute
+# cont = soup.find(class_="container")
+# print(cont.has_attr("id"))
+# print(cont.has_attr("class"))
+# print(cont.has_attr("contenteditable"))
 
+def has_class_but_not_id(tag):
+    return tag.has_attr("class") and not tag.has_attr("id")
+result = soup.find_all(has_class_but_not_id)
+print(result)
 
-
-
+def has_content_attr(tag):
+    return tag.has_attr("content")
+print(soup.find(has_content_attr))
